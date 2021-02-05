@@ -1,5 +1,5 @@
 # Complex
-Complex number plotter using domain coloring
+Complex function plotter using domain coloring
 
 ## Usage
  1. `git clone https://github.com/Ducolnd/complex`
@@ -12,6 +12,6 @@ Complex number plotter using domain coloring
  8. Run by typing `python complex.py` and close by pressing ECS
 
 ## Sources
-[algorithm-archive.org](https://www.algorithm-archive.org/contents/domain_coloring/domain_coloring.html)
-[dynamicmath.xyz](https://www.dynamicmath.xyz/domain-coloring/#basic)
-[wikipedia.org](https://en.wikipedia.org/wiki/Domain_coloring)
+[algorithm-archive.org](https://www.algorithm-archive.org/contents/domain_coloring/domain_coloring.html) <br>
+[dynamicmath.xyz](https://www.dynamicmath.xyz/domain-coloring/#basic)<br>
+[wikipedia.org](https://en.wikipedia.org/wiki/Domain_coloring)<br>

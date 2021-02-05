@@ -1,70 +1,39 @@
 import math
 import cv2
 import numpy as np
-
-
-
-class ComplexNum:
-    def __init__(self, re, im, m=100, new=True):
-        if new:
-            self.re = np.tile(re, (m,1)) 
-            self.im = np.rot90(np.tile(im, (m,1)))
-        else:
-            self.re = re
-            self.im = im
-
-    def __add__(self, other): # Add two complex nums
-        return ComplexNum(self.re + other.re, self.im + other.im, new=False)
-
-    def __mul__(self, other): # Multiply two complex nums
-        re = (self.re * other.re) + (self.im * other.im * -1)
-        im = self.im * other.re + self.re * other.im
-
-        return ComplexNum(re, im, new=False)
-
-    def __truediv__(self, other): # Divide two complex nums
-        pass
-
-    def visualRepresentation(self):
-        print("{} + {}i".format(str(self.re), str(self.im)))
-
-    def magnitude(self):
-        return np.sqrt(self.re ** 2 + self.im ** 2)
-
-    def phase(self):
-        return np.arctan2(self.im, self.re) + math.pi 
-
-
-def function(z):
-    return z*z*z
-
-
-def to_r(what):
-    return (what / (2 * math.pi)) * 255
-
-def to_g(what):
-   ma = np.amax(what)
-   return (what / ma) * 255
+import math
 
 size = 400
 
-res = np.linspace(-4, 4, size + 1)
-ims = np.linspace(-4, 4, size + 1)
+res = np.linspace(-2, 2, size * 2 + 1)
+ims = np.linspace(-2, 2, size * 2 + 1)
 
-cnums = ComplexNum(res, ims, m=size + 1)
 
-cnums = function(cnums)
+nums = np.zeros((len(res) - 1, len(ims) - 1), dtype=np.complex_)
 
-r = to_r(cnums.phase())
-g = to_g(cnums.magnitude())
-b = np.full((size + 1, size + 1), 0)
+for i in range(-size, size):
+    for j in range(-size , size):
+        nums[i+size, j+size] = complex(res[i+size], ims[j+size])
 
-np.set_printoptions(threshold=np.inf)
+def function(complex_num):
+    return complex_num ** 2
 
-rgb = np.dstack((r, g, b))
-rgb = rgb / 255
+nums = function(nums)
 
-cv2.imshow("d", rgb)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+phase = np.angle(nums, True)
+magnitude = np.abs(nums)
 
+
+H = np.interp(phase, (-180, 180), (0,  360))
+S = 0.7 + (1 / 3) * (np.log(magnitude) / np.log(1.6) - np.floor(np.log(magnitude) / np.log(1.6)))   # alternatively S = 0.5 + 0.5 * (magnitude - np.floor(magnitude))
+
+V = ((np.abs(np.sin(math.pi * nums.real)) ** 0.1) * (np.abs(np.sin(math.pi * nums.imag)) ** 0.1)) * 255 # alternatively V = np.full(phase.shape, 255, dtype="float32")
+
+
+HSV = np.dstack((H, S, V)).astype("float32", copy=False)
+
+image = cv2.cvtColor(HSV, cv2.COLOR_HSV2BGR) / 255
+
+cv2.imshow("Complex", image)
+cv2.waitKey(0)  
+cv2.destroyAllWindows()  

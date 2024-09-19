@@ -1,0 +1,42 @@
+<!-- templates/index.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}
+Complex Domain Colouring
+{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-bold text-center mb-8">Complex Domain Colouring</h1>
+
+<!-- Include the error message partial -->
+{% include 'error_message.html' %}
+
+<!-- Include the form section partial -->
+{% include 'form_section.html' %}
+
+<!-- Display the generated image if present -->
+{% if image_path %}
+<div class="mt-8 text-center">
+    <h2 class="text-2xl font-semibold mb-4">Generated Image:</h2>
+    <img
+        src="{{ url_for('static', filename='complex_function_plot_with_axis.png') }}"
+        alt="Complex Function Plot"
+        class="border border-gray-300 rounded-lg shadow-md">
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function appendToInput(value) {
+        const input = document.getElementById('function');
+        input.value += value;
+    }
+
+    function setInput(value) {
+        const input = document.getElementById('function');
+        input.value = value;
+    }
+</script>
+{% endblock %}

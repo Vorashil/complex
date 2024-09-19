@@ -1,0 +1,101 @@
+<!-- templates/form_section.html -->
+
+<form method="POST" class="space-y-6">
+    <div>
+        <label for="function" class="block text-gray-700 font-medium mb-2">Enter a function of z:</label>
+        <input
+            type="text"
+            id="function"
+            name="function"
+            placeholder="e.g., z ** (1 + 10j) * np.cos(z)"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required>
+    </div>
+
+    <!-- Buttons for common mathematical symbols -->
+    <div class="space-y-4">
+        <div class="flex flex-wrap gap-2">
+            <button
+                type="button"
+                onclick="appendToInput('**')"
+                class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 transition">Power ( ^ )</button>
+            <button
+                type="button"
+                onclick="appendToInput('(np.e)')"
+                class="bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 transition">e</button>
+            <button
+                type="button"
+                onclick="appendToInput('(np.pi)')"
+                class="bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-600 transition">π</button>
+            <button
+                type="button"
+                onclick="appendToInput('(np.log)')"
+                class="bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">log</button>
+            <button
+                type="button"
+                onclick="appendToInput('1j')"
+                class="bg-indigo-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-600 transition">i (imaginary)</button>
+        </div>
+
+        <!-- Trigonometric Functions -->
+        <div class="flex flex-wrap gap-2">
+            <button
+                type="button"
+                onclick="appendToInput('(np.sin)')"
+                class="bg-purple-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-purple-600 transition">sin</button>
+            <button
+                type="button"
+                onclick="appendToInput('(np.cos)')"
+                class="bg-teal-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-teal-600 transition">cos</button>
+            <button
+                type="button"
+                onclick="appendToInput('(np.tan)')"
+                class="bg-orange-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-orange-600 transition">tan</button>
+            <button
+                type="button"
+                onclick="appendToInput('(np.arcsin)')"
+                class="bg-pink-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-pink-600 transition">arcsin</button>
+            <button
+                type="button"
+                onclick="appendToInput('(np.arccos)')"
+                class="bg-lime-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-lime-600 transition">arccos</button>
+            <button
+                type="button"
+                onclick="appendToInput('(np.arctan)')"
+                class="bg-amber-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-amber-600 transition">arctan</button>
+        </div>
+    </div>
+
+    <!-- Pre-Made Functions -->
+    <div class="mt-8">
+        <h3 class="text-lg font-semibold mb-4">Or choose a pre-made function:</h3>
+        <div class="space-y-2">
+            <button
+                type="button"
+                onclick="setInput('z ** 2')"
+                class="w-full bg-gray-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-gray-600 transition">z^2</button>
+            <button
+                type="button"
+                onclick="setInput('np.exp(z)')"
+                class="w-full bg-gray-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-gray-600 transition">e^z</button>
+            <button
+                type="button"
+                onclick="setInput('np.sin(z)')"
+                class="w-full bg-gray-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-gray-600 transition">sin(z)</button>
+            <button
+                type="button"
+                onclick="setInput('1 / z')"
+                class="w-full bg-gray-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-gray-600 transition">1 / z</button>
+            <button
+                type="button"
+                onclick="setInput('(z - 1) / (z ** 13 + z + 1)')"
+                class="w-full bg-gray-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-gray-600 transition">(z - 1) / (z ** 13 + z + 1)</button>
+        </div>
+    </div>
+
+    <button
+        type="submit"
+        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200 ease-in-out mt-6">
+        Generate Plot
+    </button>
+</form>

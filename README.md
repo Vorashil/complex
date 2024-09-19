@@ -5,7 +5,7 @@ Flask app for complex function plotter using domain coloring
 ![Screenshot 2024-09-19 at 10.25.14.png](./static/demo-2.png)
 
 ## Usage
- 1. `git clone https://github.com/Vorashil/complex`
+ 1. `git clone https://github.com/Vorashil/complex-domain-colouring.git`
  2. `cd complex-domain-colouring`
  3. Install python 3 and virtualenv
  4. `virtualenv venv`

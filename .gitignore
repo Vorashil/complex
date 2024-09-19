@@ -1,4 +1,7 @@
 /venv
 static/*
 
+!static/demo-1.png
+!static/demo-2.png
+
 __pychache__/

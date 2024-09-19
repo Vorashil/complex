@@ -1,17 +1,15 @@
-# Complex
-Complex function plotter using domain coloring
+# Web App with  Complex Domain Colouring tool
+Flask app for complex function plotter using domain coloring
 
 ## Usage
- 1. `git clone https://github.com/Ducolnd/complex`
- 2. `cd complex`
+ 1. `git clone https://github.com/Vorashil/complex`
+ 2. `cd complex-domain-colouring`
  3. Install python 3 and virtualenv
  4. `virtualenv venv`
  5. `source venv/bin/activate`
  6. `pip install -r requirements.txt`
- 7. Open complex.py and edit `function` function
- 8. Run by typing `python complex.py` and close by pressing ECS
+ 7. Run by typing `python app.py` on your terminal
 
 ## Sources
-[algorithm-archive.org](https://www.algorithm-archive.org/contents/domain_coloring/domain_coloring.html) <br>
-[dynamicmath.xyz](https://www.dynamicmath.xyz/domain-coloring/#basic)<br>
-[wikipedia.org](https://en.wikipedia.org/wiki/Domain_coloring)<br>
+This project is the extension of following script
+https://github.com/Ducolnd/complex
